@@ -24,6 +24,7 @@ jobs:
   scan:
     name: gitleaks
     runs-on: Agent-1
+    needs: compile
     steps:
       - uses: actions/checkout@v4
         with:
