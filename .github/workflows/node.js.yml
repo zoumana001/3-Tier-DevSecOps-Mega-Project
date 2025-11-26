@@ -117,7 +117,7 @@ jobs:
         with:
           context: ./api
           push: true
-          tags: zoum44/api:latest
+          tags: zoum44/zoumana001:latest
           file: ./api/Dockerfile 
 
   build_fronted_docker_image_and-push:
@@ -142,6 +142,6 @@ jobs:
         with:
           context: ./client
           push: true
-          tags: zoum44/client:latest
+          tags: zoum44/zoumana001:latest
           file: ./client/Dockerfile 
 
