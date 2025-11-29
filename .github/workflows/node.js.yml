@@ -150,5 +150,5 @@ jobs:
         file: ./client/Dockerfile
         push: true
         tags: |
-          zoum44/frontend:latest
-          zoum44/frontend:${{ github.sha }}
+          zoum44/client:latest
+          zoum44/client:${{ github.sha }}
