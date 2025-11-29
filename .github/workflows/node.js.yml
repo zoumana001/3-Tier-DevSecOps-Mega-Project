@@ -152,3 +152,39 @@ jobs:
         tags: |
           zoum44/client:latest
           zoum44/client:${{ github.sha }}
+
+  trivy-scan-backend:
+    name: trivy-scan
+    runs-on: Agent-1
+    needs: build_frontend_docker_image_and_push
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: image
+          image-ref: zoum44/backend:latest
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+  trivy-scan-frontend:
+    name: trivy-scans
+    runs-on: Agent-1
+    needs: build_frontend_docker_image_and_push
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: image
+          image-ref: zoum44/frontend:latest
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
