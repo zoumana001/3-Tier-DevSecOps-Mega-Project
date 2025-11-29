@@ -164,7 +164,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: image
-          image-ref: zoum44/backend:latest
+          image-ref: zoum44/api:latest
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
@@ -174,7 +174,7 @@ jobs:
   trivy-scan-frontend:
     name: trivy-scans
     runs-on: Agent-1
-    needs: build_frontend_docker_image_and_push
+    needs: trivy-scan-backend
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
